@@ -1,3 +1,4 @@
+import java.net.SocketException;
 import java.util.HashMap;
 
 public class ThreadManager extends Thread {
@@ -21,16 +22,13 @@ public class ThreadManager extends Thread {
 		return null;
 	}
 
-	public synchronized void cleanDeadThreads() {
+	public synchronized void cleanDeadThreads() throws SocketException {
 		mActiveThreads.forEach((integer, jokeThread) -> {
 			if (!jokeThread.isAlive()) {
 				mActiveThreads.remove(integer);
 			}
 		});
 	}
-
-
-	
 	
 	public void run() {
 		do {
@@ -39,7 +37,11 @@ public class ThreadManager extends Thread {
 			} catch (InterruptedException sleepingThread) {
 				sleepingThread.printStackTrace();
 			}
-			cleanDeadThreads();
+			try {
+				cleanDeadThreads();
+			} catch (SocketException e) {
+				e.printStackTrace();
+			}
 		} while(true);
 	}
 
