@@ -25,7 +25,7 @@ public class PingServer {
 
 			// Block until the host receives a UDP packet.
 			socket.receive(request);
-
+			
 			// Print the recieved data.
 			printData(request);
 
