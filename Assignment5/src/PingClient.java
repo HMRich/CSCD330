@@ -18,12 +18,12 @@ public class PingClient {
 		@SuppressWarnings("resource")
 		DatagramSocket socket = new DatagramSocket(serverPort);
 
-		int port = Integer.parseInt(args[0]);
-
-		Random random = new Random();
-
-		@SuppressWarnings("resource")
-		DatagramSocket socket = new DatagramSocket(port);
+//		Random random = new Random();
+		
+		for(int index = 0; index < 10; index++)
+		{
+			
+		}
 
 		while (true) {
 			// Create a datagram packet to hold incomming UDP packet.
